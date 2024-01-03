@@ -3,10 +3,15 @@
     "name": "blog",
     "version": "1.0.0",
     "main": "src/index.js",
+    "lint-staged": {
+        "src/**/*.{js,json,scss}": "prettier --single-quote --trailing-comma all --tab-width 4 --write"
+    },
     "scripts": {
+        "beautify": "lint-staged",
         "start": "nodemon --inspect src/index.js",
         "watch": "node-sass --watch --follow src/resources/scss/app.scss src/public/css/app.css",
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "prepare": "husky install"
     },
     "author": "cuonglm",
     "license": "ISC",
@@ -15,9 +20,12 @@
         "express-handlebars": "^7.1.2"
     },
     "devDependencies": {
+        "lint-staged": "^15.2.0",
         "morgan": "^1.10.0",
         "node-sass": "^9.0.0",
-        "nodemon": "^3.0.2"
+        "nodemon": "^3.0.2",
+        "prettier": "^3.1.1",
+        "husky": "^8.0.0"
     },
     "description": "nodejs_blog",
     "repository": {

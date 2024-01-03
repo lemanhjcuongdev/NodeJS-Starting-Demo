@@ -1,9 +1,9 @@
-import express from "express";
-import morgan from "morgan";
-import { engine } from "express-handlebars";
-import path, { dirname } from "path";
-import { fileURLToPath } from "url";
-import route from "./routes/index.js";
+import express from 'express';
+import morgan from 'morgan';
+import { engine } from 'express-handlebars';
+import path, { dirname } from 'path';
+import { fileURLToPath } from 'url';
+import route from './routes/index.js';
 
 const app = express();
 const port = 3000;
@@ -12,28 +12,28 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 //Define static route
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, 'public')));
 
 //POST method processor: body parser - querystring parsing
 app.use(
     express.urlencoded({
         extended: true,
-    })
+    }),
 );
 app.use(express.json());
 
 //HTTP Logger
-app.use(morgan("combined"));
+app.use(morgan('combined'));
 
 //Template Engine: set views
 app.engine(
-    "hbs",
+    'hbs',
     engine({
-        extname: ".hbs",
-    })
+        extname: '.hbs',
+    }),
 );
-app.set("view engine", "hbs");
-app.set("views", path.join(__dirname, "resources/views"));
+app.set('view engine', 'hbs');
+app.set('views', path.join(__dirname, 'resources/views'));
 
 //routes init
 route(app);
