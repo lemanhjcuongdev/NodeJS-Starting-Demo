@@ -17,15 +17,16 @@
     "license": "ISC",
     "dependencies": {
         "express": "^4.18.2",
-        "express-handlebars": "^7.1.2"
+        "express-handlebars": "^7.1.2",
+        "mongoose": "^8.0.3"
     },
     "devDependencies": {
+        "husky": "^8.0.0",
         "lint-staged": "^15.2.0",
         "morgan": "^1.10.0",
         "node-sass": "^9.0.0",
         "nodemon": "^3.0.2",
-        "prettier": "^3.1.1",
-        "husky": "^8.0.0"
+        "prettier": "^3.1.1"
     },
     "description": "nodejs_blog",
     "repository": {

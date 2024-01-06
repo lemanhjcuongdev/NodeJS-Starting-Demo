@@ -4,6 +4,10 @@ import { engine } from 'express-handlebars';
 import path, { dirname } from 'path';
 import { fileURLToPath } from 'url';
 import route from './routes/index.js';
+import connect from './config/db/index.js';
+
+//CONNECT DB
+connect();
 
 const app = express();
 const port = 3000;
@@ -33,12 +37,12 @@ app.engine(
     }),
 );
 app.set('view engine', 'hbs');
-app.set('views', path.join(__dirname, 'resources/views'));
+app.set('views', path.join(__dirname, 'resources', 'views'));
 
 //routes init
 route(app);
 
 //listen port
 app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`);
+    console.log(`App listening on port ${port}`);
 });

@@ -1,7 +1,16 @@
+import Course from '../models/Course.js';
+
 class BasicController {
     //[GET] /
     index(req, res) {
-        res.render('home');
+        // res.render('home');
+        Course.find().then((courses) => {
+            if (courses.length > 0) {
+                res.json(courses);
+            } else {
+                res.status(400).json({ error: 'ERROR!!!' });
+            }
+        });
     }
 
     //[GET] /search
