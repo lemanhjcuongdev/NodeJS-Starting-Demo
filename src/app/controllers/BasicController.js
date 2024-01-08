@@ -1,16 +1,17 @@
 import Course from '../models/Course.js';
+import { multipleMongoosesToObject } from '../../utils/mongoose.js';
 
 class BasicController {
     //[GET] /
-    index(req, res) {
-        // res.render('home');
-        Course.find().then((courses) => {
-            if (courses.length > 0) {
-                res.json(courses);
-            } else {
-                res.status(400).json({ error: 'ERROR!!!' });
-            }
-        });
+    index(req, res, next) {
+        Course.find({})
+            .then((courses) => {
+                res.render('home', {
+                    //convert Mongoose Object to Native Object
+                    courses: multipleMongoosesToObject(courses),
+                });
+            })
+            .catch(next);
     }
 
     //[GET] /search
