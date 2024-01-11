@@ -1,10 +1,11 @@
-import express from 'express';
-import morgan from 'morgan';
-import { engine } from 'express-handlebars';
-import path, { dirname } from 'path';
-import { fileURLToPath } from 'url';
-import route from './routes/index.js';
-import connect from './config/db/index.js';
+const express = require('express');
+const morgan = require('morgan');
+const { engine } = require('express-handlebars');
+const path = require('path'),
+    { dirname } = require('path');
+const { fileURLToPath } = require('url');
+const route = require('./routes/index.js');
+const connect = require('./config/db/index.js');
 
 //CONNECT DB
 connect();
@@ -12,8 +13,8 @@ connect();
 const app = express();
 const port = 3000;
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = dirname(__filename);
 
 //Define static route
 app.use(express.static(path.join(__dirname, 'public')));

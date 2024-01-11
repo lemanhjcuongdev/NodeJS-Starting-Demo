@@ -1,5 +1,5 @@
-import { mongooseToObject } from '../../utils/mongoose.js';
-import Course from '../models/Course.js';
+const { mongooseToObject } = require('../../utils/mongoose.js');
+const Course = require('../models/Course.js');
 
 class CourseController {
     //[GET] /courses/:slug
@@ -10,6 +10,22 @@ class CourseController {
             )
             .catch(next);
     }
+
+    //[GET] /courses/create
+    create(req, res, next) {
+        res.render('course/create');
+    }
+
+    //[POST] /courses/store
+    store(req, res, next) {
+        const formData = req.body;
+        formData.image = `https://img.youtube.com/vi/${req.body.videoId}/sddefault.jpg`;
+        const course = new Course(formData);
+        course
+            .save()
+            .then(() => res.redirect('/'))
+            .catch((err) => res.send('err: ' + err));
+    }
 }
 
-export default new CourseController();
+module.exports = new CourseController();

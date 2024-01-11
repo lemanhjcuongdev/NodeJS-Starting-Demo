@@ -1,5 +1,5 @@
-import Course from '../models/Course.js';
-import { multipleMongoosesToObject } from '../../utils/mongoose.js';
+const Course = require('../models/Course.js');
+const { multipleMongoosesToObject } = require('../../utils/mongoose.js');
 
 class BasicController {
     //[GET] /
@@ -20,4 +20,4 @@ class BasicController {
     }
 }
 
-export default new BasicController();
+module.exports = new BasicController();

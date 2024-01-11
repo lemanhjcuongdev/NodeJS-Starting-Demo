@@ -1,6 +1,6 @@
-import newsRouter from './news.js';
-import basicRouter from './basic.js';
-import courseRouter from './courses.js';
+const newsRouter = require('./news.js');
+const basicRouter = require('./basic.js');
+const courseRouter = require('./courses.js');
 
 function route(app) {
     app.use('/news', newsRouter); //dùng use thay vì get
@@ -9,4 +9,4 @@ function route(app) {
     app.use('/', basicRouter); //dùng use thay vì get
 }
 
-export default route;
+module.exports = route;

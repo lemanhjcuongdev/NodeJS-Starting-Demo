@@ -1,5 +1,5 @@
-import express from 'express';
-import basicController from '../app/controllers/BasicController.js';
+const express = require('express');
+const basicController = require('../app/controllers/BasicController.js');
 
 const router = express.Router();
 
@@ -7,4 +7,4 @@ const router = express.Router();
 router.get('/search', basicController.search);
 router.get('/', basicController.index);
 
-export default router;
+module.exports = router;
